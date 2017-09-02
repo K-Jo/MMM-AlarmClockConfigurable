@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<html ng-app="alarmclock">
 
 <head>
   <title>Pi Alarm Clock</title>
@@ -9,13 +8,21 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="angular.min.js"></script>
+  <script src="app.js"></script>
 </head>
 
 <body>
-
-  alarm: on
-
-  <form>
-    <input type="time" name="time">
+  <form ng-controller="AlarmController">
+    <div class="form-group">
+        <label for="alarmStatus">Alarm</label>
+        <input id="alarmStatus" type="checkbox" ng-model="alarmStatus">
+    </div>
+    <div class="form-group">
+        <label for="alarmTime">Time</label>
+        <input type="time" name="alarmTime" ng-model="alarmTime">
+    </div>
+    <button type="submit" class="btn btn-primary" ng-click="saveAlarm()">Save</button>
   </form>
 </body>
