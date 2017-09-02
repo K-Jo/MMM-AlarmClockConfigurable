@@ -12,19 +12,25 @@ var server = http.createServer(function(req, res) {
 });
 server.listen(8000);
 
+
 // Alarm interface
 var app = express();
-var alarm = false;
+var alarmStatus = false;
 var hours = 7;
 var minutes = 5;
 
 app.get('/alarm/status', function (req, res) {
-  res.send(alarm)
+  res.send(alarmStatus)
 })
 
-app.get('/alarm/next', function (req, res) {
+app.post('/alarm/status/', function (req, res) {
+  alarmStatus = !alarmStatus;
+  res.send("ok");
+});
+
+app.get('/alarm/time/next', function (req, res) {
   var nextAlarm = {
-          time: "07:10",
+          time:  hours + ":" + minutes,
           days: [
                   1,
                   2,
@@ -35,14 +41,16 @@ app.get('/alarm/next', function (req, res) {
                   7
           ],
           title: "Wake Up",
-          message: "Get your sweet ass out of bed motherf*cker!"
+          message: "Get your sweet ass out of bed!"
   };
-  res.send(alarm);
+  res.send(nextAlarm);
 });
 
-app.post('/alarm/:hours/:minutes', function (req, res) {
+app.post('/alarm/time/:hours/:minutes', function (req, res) {
   hours = req.params.hours;
   minutes = req.params.minutes;
+  res.send("ok");
 });
+
 
 app.listen(8001)
