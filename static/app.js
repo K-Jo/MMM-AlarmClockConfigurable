@@ -21,7 +21,7 @@ var AlarmController = function($scope, $http) {
   }
 
   $scope.saveAlarm = function() {
-    $http.post("http://bedroompi:8001/alarm/time/" + $scope.alarmTime.getHours() + "/" + $scope.alarmTime.getMinutes(), "")
+    $http.post("http://bedroompi:8001/alarm/time/" + ('0' + $scope.alarmTime.getHours()).slice(-2) + ":" + ('0' + $scope.alarmTime.getMinutes()).slice(-2), "")
         .then(function (response) {
             getTime();
         });

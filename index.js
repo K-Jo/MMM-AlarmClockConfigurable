@@ -21,7 +21,7 @@ var alarmTime = new Date('01/01/1970 07:05:00');
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.setHeader('Access-Control-Allow-Origin', ['http://bedroompi:8000', 'http://localhost:8000']);
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -64,11 +64,9 @@ app.get('/alarm/time/next', function (req, res) {
   res.send(nextAlarm);
 });
 
-app.post('/alarm/time/:hours/:minutes', function (req, res) {
-  hours = req.params.hours;
-  minutes = req.params.minutes;
+app.post('/alarm/time/:time', function (req, res) {
+  alarmTime = new Date("01/01/1970 " + req.params.time + ":00");
   res.send("ok");
 });
-
 
 app.listen(8001)
