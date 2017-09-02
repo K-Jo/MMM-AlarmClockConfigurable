@@ -16,8 +16,7 @@ server.listen(8000);
 // Alarm interface
 var app = express();
 var alarmStatus = false;
-var hours = 7;
-var minutes = 5;
+var alarmTime = new Date('01/01/1970 07:05:00');
 
 app.use(function (req, res, next) {
 
@@ -49,7 +48,7 @@ app.post('/alarm/status/', function (req, res) {
 
 app.get('/alarm/time/next', function (req, res) {
   var nextAlarm = {
-          time:  hours + ":" + minutes,
+          time:  ('0' + alarmTime.getHours()).slice(-2) + ":" + ('0' + alarmTime.getMinutes()).slice(-2),
           days: [
                   1,
                   2,
