@@ -40,6 +40,7 @@ Module.register('MMM-AlarmClockConfigurable', {
         setInterval(() => {
             this.checkAlarm();
         }, 1000);
+        Log.info("blabla");
         setInterval(() => {
             this.getNextAlarm();
         }, 2000);
@@ -52,9 +53,9 @@ Module.register('MMM-AlarmClockConfigurable', {
   		alarmRequest.onreadystatechange = function() {
   			if (this.readyState === 4) {
   				if (this.status === 200) {
-  					Log.error(this.response);
+  					Log.info(this.response);
   				} else {
-  					Log.error(self.name + " could not fetch alarm clock");
+  					Log.info(self.name + " could not fetch alarm clock");
   				}
   			}
   		};
