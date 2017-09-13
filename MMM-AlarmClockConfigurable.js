@@ -53,7 +53,7 @@ Module.register('MMM-AlarmClockConfigurable', {
   			if (this.readyState === 4) {
   				if (this.status === 200) {
             self.next = this.response;
-            self.next.moment = self.getMoment(this.response);            
+            self.next.moment = self.getMoment(this.response);
             this.updateDom(300);
   				} else {
   					Log.info(self.name + " could not fetch alarm clock");
@@ -93,14 +93,14 @@ Module.register('MMM-AlarmClockConfigurable', {
     },
 
     setNextAlarm() {
-        this.next = null;
-        for (let i = 0; i < this.config.alarms.length; i += 1) {
-            const temp = this.getMoment(this.config.alarms[i]);
-            if (!this.next || temp.diff(this.next.moment) < 0) {
-                this.next = this.config.alarms[i];
-                this.next.moment = temp;
-            }
-        }
+        // this.next = null;
+        // for (let i = 0; i < this.config.alarms.length; i += 1) {
+        //     const temp = this.getMoment(this.config.alarms[i]);
+        //     if (!this.next || temp.diff(this.next.moment) < 0) {
+        //         this.next = this.config.alarms[i];
+        //         this.next.moment = temp;
+        //     }
+        // }
     },
 
     resetAlarmClock() {
