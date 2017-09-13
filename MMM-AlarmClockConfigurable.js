@@ -40,7 +40,25 @@ Module.register('MMM-AlarmClockConfigurable', {
         setInterval(() => {
             this.checkAlarm();
         }, 1000);
+        setInterval(() => {
+            this.getNextAlarm();
+        }, 2000);
         moment.locale(config.language);
+    },
+
+    getNextAlarm() {
+      var alarmRequest = new XMLHttpRequest();
+  		alarmRequest.open("GET", "http://bedroompi:8001/alarm/time/next", true);
+  		alarmRequest.onreadystatechange = function() {
+  			if (this.readyState === 4) {
+  				if (this.status === 200) {
+  					Log.error(this.response);
+  				} else {
+  					Log.error(self.name + " could not fetch alarm clock");
+  				}
+  			}
+  		};
+  		alarmRequest.send();
     },
 
     checkAlarm() {
