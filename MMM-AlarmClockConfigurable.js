@@ -3,11 +3,10 @@
 /* Magic Mirror
  * Module: MMM-AlarmClock
  *
- * By fewieden https://github.com/fewieden/MMM-AlarmClock
  * MIT Licensed.
  */
 
-Module.register('MMM-AlarmClock', {
+Module.register('MMM-AlarmClockConfigurable', {
 
     next: null,
     alarmFired: false,
@@ -21,7 +20,7 @@ Module.register('MMM-AlarmClock', {
     },
 
     getStyles() {
-        return ['font-awesome.css', 'MMM-AlarmClock.css'];
+        return ['font-awesome.css', 'MMM-AlarmClockConfigurable.css'];
     },
 
     getScripts() {
