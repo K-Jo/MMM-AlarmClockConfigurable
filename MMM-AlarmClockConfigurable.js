@@ -47,21 +47,23 @@ Module.register('MMM-AlarmClockConfigurable', {
     },
 
     getNextAlarm() {
-      var self = this;
-      var alarmRequest = new XMLHttpRequest();
-  		alarmRequest.open("GET", "http://bedroompi:8001/alarm/time/next", true);
-  		alarmRequest.onreadystatechange = function() {
-  			if (this.readyState === 4) {
-  				if (this.status === 200) {
-            self.next = JSON.parse(this.response);
-            self.next.moment = self.getMoment(JSON.parse(this.response));
-            self.updateDom(300);
-  				} else {
-  					Log.info(self.name + " could not fetch alarm clock");
-  				}
-  			}
-  		};
-  		alarmRequest.send();
+      if(!this.alarmFired){
+        var self = this;
+        var alarmRequest = new XMLHttpRequest();
+    		alarmRequest.open("GET", "http://bedroompi:8001/alarm/time/next", true);
+    		alarmRequest.onreadystatechange = function() {
+    			if (this.readyState === 4) {
+    				if (this.status === 200) {
+              self.next = JSON.parse(this.response);
+              self.next.moment = self.getMoment(JSON.parse(this.response));
+              self.updateDom(300);
+    				} else {
+    					Log.info(self.name + " could not fetch alarm clock");
+    				}
+    			}
+    		};
+    		alarmRequest.send();
+      }
     },
 
     checkAlarm() {
