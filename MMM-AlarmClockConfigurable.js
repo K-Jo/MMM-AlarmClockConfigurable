@@ -83,7 +83,7 @@ Module.register('MMM-AlarmClockConfigurable', {
             if (this.config.touch) {
                 MM.getModules().enumerate((module) => {
                     if (module.name === 'alert') {
-                        module.alerts['MMM-AlarmClock'].ntf.addEventListener('click', () => {
+                        module.alerts['MMM-AlarmClockConfigurable'].ntf.addEventListener('click', () => {
                             clearTimeout(this.timer);
                             this.resetAlarmClock();
                         });
@@ -92,14 +92,12 @@ Module.register('MMM-AlarmClockConfigurable', {
             }
         }
     },
-
     resetAlarmClock() {
         this.alarmFired = false;
         if (this.config.touch) {
             this.sendNotification('HIDE_ALERT');
         }
         this.getNextAlarm();
-        this.updateDom(300);
     },
 
     getMoment(alarm) {
