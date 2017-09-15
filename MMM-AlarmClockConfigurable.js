@@ -55,7 +55,7 @@ Module.register('MMM-AlarmClockConfigurable', {
   				if (this.status === 200) {
             self.next = JSON.parse(this.response);
             self.next.moment = self.getMoment(JSON.parse(this.response));
-            this.updateDom(300);
+            self.updateDom(300);
   				} else {
   					Log.info(self.name + " could not fetch alarm clock");
   				}
