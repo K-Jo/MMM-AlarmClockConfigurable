@@ -36,7 +36,7 @@ Module.register('MMM-AlarmClockConfigurable', {
 
     start() {
         Log.info(`Starting module: ${this.name}`);
-        this.setNextAlarm();
+        this.getNextAlarm();
         setInterval(() => {
             this.checkAlarm();
         }, 1000);
@@ -93,23 +93,12 @@ Module.register('MMM-AlarmClockConfigurable', {
         }
     },
 
-    setNextAlarm() {
-        // this.next = null;
-        // for (let i = 0; i < this.config.alarms.length; i += 1) {
-        //     const temp = this.getMoment(this.config.alarms[i]);
-        //     if (!this.next || temp.diff(this.next.moment) < 0) {
-        //         this.next = this.config.alarms[i];
-        //         this.next.moment = temp;
-        //     }
-        // }
-    },
-
     resetAlarmClock() {
         this.alarmFired = false;
         if (this.config.touch) {
             this.sendNotification('HIDE_ALERT');
         }
-        this.setNextAlarm();
+        this.getNextAlarm();
         this.updateDom(300);
     },
 
