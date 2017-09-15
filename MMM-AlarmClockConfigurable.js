@@ -53,7 +53,7 @@ Module.register('MMM-AlarmClockConfigurable', {
   		alarmRequest.onreadystatechange = function() {
   			if (this.readyState === 4) {
   				if (this.status === 200) {
-            self.next = this.response;
+            self.next = JSON.parse(this.response);
             self.next.moment = self.getMoment(JSON.parse(this.response));
             this.updateDom(300);
   				} else {
