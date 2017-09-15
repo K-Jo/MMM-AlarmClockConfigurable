@@ -21,7 +21,7 @@ var alarmTime = new Date('01/01/1970 07:05:00');
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://bedroompi:8000');
+    res.setHeader('Access-Control-Allow-Origin', 'http://bedroompi:8001');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
