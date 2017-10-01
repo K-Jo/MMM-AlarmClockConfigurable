@@ -49,14 +49,13 @@ app.post('/alarm/status/', function (req, res) {
 app.get('/alarm/time/next', function (req, res) {
   var nextAlarm = {
           time:  ('0' + alarmTime.getHours()).slice(-2) + ":" + ('0' + alarmTime.getMinutes()).slice(-2),
-          days: [
+          days: [ 0,
                   1,
                   2,
                   3,
                   4,
                   5,
-                  6,
-                  7
+                  6
           ],
           title: "Wake Up",
           message: "Get your sweet ass out of bed!"
