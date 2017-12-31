@@ -138,9 +138,8 @@ Module.register('MMM-AlarmClockConfigurable', {
 
             const stopalarm = document.createElement('span');
             stopalarm.classList.add('fa', 'fa-bell-slash', 'logo');
-            console.log("alarm set");
-            stopalarm.onclick = (() => { this.resetAlarmClock(); console.log("clicked") });
-            // stopalarm.addEventListener('click', () => { this.resetAlarmClock(); });
+            stopalarm.innerHTML = "test";
+            stopalarm.onclick = () => this.resetAlarmClock();
             wrapper.appendChild(stopalarm);
         } else {
             const alarm = document.createElement('div');
